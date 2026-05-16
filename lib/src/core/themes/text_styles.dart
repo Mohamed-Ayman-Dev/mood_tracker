@@ -1,0 +1,96 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mood_tracker/src/core/constants/constant.dart';
+import 'package:mood_tracker/src/core/themes/colors.dart';
+
+abstract class AppTextStyles {
+  // Headlines
+  static TextStyle headlineLarge = TextStyle(
+    fontSize: 48.sp,
+    fontWeight: FontWeight.w700,
+    height: 1.2,
+    color: Colors.white,
+    fontFamily: Constant.fontFamily,
+  );
+
+  static TextStyle headlineMedium = TextStyle(
+    fontSize: 20.sp,
+    fontWeight: FontWeight.w700,
+    color: AppColors.labelTextColor,
+    fontFamily: Constant.fontFamily,
+  );
+
+  static TextStyle headlineSmall = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w400,
+    color: AppColors.headlineTextColor,
+    fontFamily: Constant.fontFamily,
+  );
+
+  // Titles
+  static TextStyle titleLarge = TextStyle(
+    fontSize: 36.sp,
+    fontWeight: FontWeight.w700,
+    color: Colors.white,
+    fontFamily: Constant.fontFamily,
+  );
+
+  static TextStyle titleMedium = TextStyle(
+    fontSize: 18.sp,
+    fontWeight: FontWeight.w500,
+    color: Colors.black,
+    fontFamily: Constant.fontFamily,
+  );
+
+  static TextStyle titleSmall = TextStyle(
+    fontSize: 18.sp,
+    fontWeight: FontWeight.w500,
+    color: Colors.black,
+    fontFamily: Constant.fontFamily,
+  );
+
+  // Labels
+  static TextStyle labelLarge = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w700,
+    color: AppColors.labelTextColor,
+    fontFamily: Constant.fontFamily,
+  );
+
+  static TextStyle labelMedium = TextStyle(
+    fontSize: 13.sp,
+    fontWeight: FontWeight.w700,
+    color: AppColors.labelTextColor,
+    fontFamily: Constant.fontFamily,
+  );
+
+  static TextStyle labelSmall = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w400,
+    color: AppColors.labelTextColor,
+    fontFamily: Constant.fontFamily,
+  );
+
+  // Body
+
+  static TextStyle bodyLarge = TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w400,
+    color: AppColors.bodyTextColor,
+    fontFamily: Constant.fontFamily,
+  );
+
+  static TextStyle bodyMedium = TextStyle(
+    fontSize: 12.sp,
+    fontWeight: FontWeight.w400,
+    color: AppColors.labelTextColor,
+    fontFamily: Constant.fontFamily,
+  );
+
+  static TextStyle bodySmall = TextStyle(
+    fontSize: 12.sp,
+    fontWeight: FontWeight.w400,
+    color: AppColors.bodyGreyTextColor,
+    fontFamily: Constant.fontFamily,
+  );
+}
