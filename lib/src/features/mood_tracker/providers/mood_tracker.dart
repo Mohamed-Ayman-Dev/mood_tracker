@@ -4,9 +4,10 @@ import '../../../core/constants/enums.dart';
 import '../models/mood_entry.dart';
 
 class MoodProvider extends ChangeNotifier {
+  MoodType selectedMood = MoodType.happy;
+
   final List<MoodEntry> _entries = [];
 
-  /// Returns up to the 7 most recent entries, newest first.
   List<MoodEntry> get last7Entries {
     final sorted = List<MoodEntry>.from(_entries)
       ..sort((a, b) => b.timestamp.compareTo(a.timestamp));
@@ -15,14 +16,20 @@ class MoodProvider extends ChangeNotifier {
 
   bool get hasEntries => _entries.isNotEmpty;
 
-  void addMood(MoodType mood) {
+  void addMood() {
     _entries.add(
       MoodEntry(
         id: DateTime.now().millisecondsSinceEpoch.toString(),
-        mood: mood,
+        mood: selectedMood,
         timestamp: DateTime.now(),
       ),
     );
+    notifyListeners();
+  }
+
+  void setSelectedMood(MoodType mood) {
+    if (selectedMood == mood) return;
+    selectedMood = mood;
     notifyListeners();
   }
 }

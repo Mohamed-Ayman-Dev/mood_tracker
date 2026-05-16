@@ -14,6 +14,7 @@ abstract class AppColors {
   static const Color backgroundColor = Color(0XFF12101e);
   static const Color appBarBackGroundColor = Colors.white;
   static const Color navBarBackgroundColor = Color(0xFF323539);
+  static const Color modePreviewBackGroundColor = Color(0XFF33215a);
 
   // text colors
   static const Color labelTextColor = Colors.black;
@@ -34,7 +35,8 @@ abstract class AppColors {
 
   //mods colors
   static const Color moodHappyColor = Color(0xFF11aa79);
-  static const Color moodSadColor = Color(0XFF33215a);
-  static const Color moodTiredColor = Color(0XFF33215a);
-  static const Color moodAnxiousColor = Color(0XFF33215a);
+  static const Color moodEcstaticColor = Color(0xFFFFB300);
+  static const Color moodAwfulColor = Color(0xFFE53935);
+  static const Color moodSadColor = Color(0xFF8E24AA);
+  static const Color moodNeutralColor = Color(0xFF1E88E5);
 }

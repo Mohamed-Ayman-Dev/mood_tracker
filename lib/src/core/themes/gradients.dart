@@ -12,10 +12,10 @@ abstract class AppGradients {
   static RadialGradient glowGradient(Color color) {
     return RadialGradient(
       center: const Alignment(0, -0.2),
-      radius: 0.9,
+      radius: 0.6,
       colors: [
-        color.withOpacity(.28),
-        color.withOpacity(.12),
+        color.withOpacity(.2),
+        color.withOpacity(.1),
         Colors.transparent,
       ],
       stops: const [0, .35, 1],

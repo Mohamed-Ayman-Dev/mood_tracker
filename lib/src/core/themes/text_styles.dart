@@ -20,9 +20,9 @@ abstract class AppTextStyles {
   );
 
   static TextStyle headlineSmall = TextStyle(
-    fontSize: 14,
-    fontWeight: FontWeight.w400,
-    color: AppColors.headlineTextColor,
+    fontSize: 12,
+    fontWeight: FontWeight.w300,
+    color: AppColors.thirdColor,
     fontFamily: Constant.fontFamily,
   );
 

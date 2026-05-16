@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mood_tracker/src/core/extension/mood_type_extension.dart';
 import 'package:mood_tracker/src/features/mood_tracker/widgets/painters/mood_face_painter.dart';
 
-import '../models/mood_entry.dart';
+import '../../models/mood_entry.dart';
 
 class TimelineEntryCard extends StatefulWidget {
   final MoodEntry entry;
@@ -53,7 +53,6 @@ class _TimelineEntryCardState extends State<TimelineEntryCard>
             width: 100,
             margin: const EdgeInsets.only(right: 12),
             decoration: BoxDecoration(
-              color: Colors.white,
               borderRadius: BorderRadius.circular(16),
               border: Border.all(
                 color: c.withOpacity(0.3 + _glow.value * 0.5),

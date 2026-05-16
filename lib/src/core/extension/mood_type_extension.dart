@@ -13,11 +13,11 @@ extension MoodTypeX on MoodType {
   };
 
   Color get color => switch (this) {
-    MoodType.ecstatic => const Color(0xFFFFB300),
+    MoodType.ecstatic => AppColors.moodEcstaticColor,
     MoodType.happy => AppColors.moodHappyColor,
-    MoodType.neutral => const Color(0xFF1E88E5),
-    MoodType.sad => const Color(0xFF8E24AA),
-    MoodType.awful => const Color(0xFFE53935),
+    MoodType.neutral => AppColors.moodNeutralColor,
+    MoodType.sad => AppColors.moodSadColor,
+    MoodType.awful => AppColors.moodAwfulColor,
   };
 
   Color get bgColor => switch (this) {

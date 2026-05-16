@@ -1,0 +1,69 @@
+import 'package:flutter/material.dart';
+import 'package:mood_tracker/src/core/extension/mood_type_extension.dart';
+import 'package:mood_tracker/src/features/mood_tracker/providers/mood_tracker.dart';
+import 'package:mood_tracker/src/features/mood_tracker/widgets/floating_mood_face.dart';
+import 'package:provider/provider.dart';
+
+import '../../../core/constants/enums.dart';
+import '../../../core/extension/space_extensions_helper.dart';
+import '../../../core/themes/app_radius.dart';
+import '../../../core/themes/colors.dart';
+import '../../../core/themes/text_styles.dart';
+
+class MoodPreview extends StatefulWidget {
+  const MoodPreview({super.key});
+
+  @override
+  State<MoodPreview> createState() => _MoodPreviewState();
+}
+
+class _MoodPreviewState extends State<MoodPreview>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 3),
+    )..repeat(reverse: true);
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Selector<MoodProvider, MoodType>(
+      selector: (context, provider) => provider.selectedMood,
+      builder: (context, selectedMood, child) {
+        return Container(
+          decoration: BoxDecoration(
+            borderRadius: AppRadius.borderRadiusLarge24,
+            color: AppColors.modePreviewBackGroundColor,
+            border: Border.all(color: AppColors.borderColor, width: 1.5),
+          ),
+          padding: EdgeInsets.symmetric(horizontal: 150, vertical: 50),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              FloatingMoodFace(mood: selectedMood),
+              30.heightSpace,
+              Text(
+                selectedMood.name,
+                style: AppTextStyles.labelMedium.copyWith(
+                  color: selectedMood.color,
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+}
