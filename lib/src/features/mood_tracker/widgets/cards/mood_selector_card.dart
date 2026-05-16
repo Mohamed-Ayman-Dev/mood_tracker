@@ -55,7 +55,7 @@ class _MoodSelectorCardState extends State<MoodSelectorCard>
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 200),
             width: 150,
-            padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 6),
+            padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 6),
             decoration: BoxDecoration(
               color: _hovered ? widget.mood.bgColor : Colors.transparent,
               borderRadius: BorderRadius.circular(16),

@@ -48,7 +48,7 @@ class _MoodPreviewState extends State<MoodPreview>
             color: AppColors.modePreviewBackGroundColor,
             border: Border.all(color: AppColors.borderColor, width: 1.5),
           ),
-          padding: EdgeInsets.symmetric(horizontal: 150, vertical: 50),
+          padding: EdgeInsets.symmetric(horizontal: 140, vertical: 50),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mood_tracker/src/core/extension/format_date_time_on_date_time.dart';
 import 'package:mood_tracker/src/core/extension/mood_type_extension.dart';
 import 'package:mood_tracker/src/features/mood_tracker/widgets/painters/mood_face_painter.dart';
 
@@ -83,7 +84,7 @@ class _TimelineEntryCardState extends State<TimelineEntryCard>
               ),
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+              padding: const EdgeInsets.all(10),
               child: Column(
                 children: [
                   SizedBox(
@@ -102,7 +103,7 @@ class _TimelineEntryCardState extends State<TimelineEntryCard>
                   ),
                   const SizedBox(height: 3),
                   Text(
-                    _fmtDate(widget.entry.timestamp),
+                    widget.entry.timestamp.fmtDate(),
                     style: const TextStyle(
                       color: Color(0xFF999999),
                       fontSize: 9.5,
@@ -110,7 +111,7 @@ class _TimelineEntryCardState extends State<TimelineEntryCard>
                     textAlign: TextAlign.center,
                   ),
                   Text(
-                    _fmtTime(widget.entry.timestamp),
+                    widget.entry.timestamp.fmtTime(),
                     style: TextStyle(
                       color: c.withOpacity(0.8),
                       fontSize: 9,
@@ -124,30 +125,5 @@ class _TimelineEntryCardState extends State<TimelineEntryCard>
         ),
       ),
     );
-  }
-
-  String _fmtDate(DateTime dt) {
-    const m = [
-      'Jan',
-      'Feb',
-      'Mar',
-      'Apr',
-      'May',
-      'Jun',
-      'Jul',
-      'Aug',
-      'Sep',
-      'Oct',
-      'Nov',
-      'Dec',
-    ];
-    const d = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-    return '${d[dt.weekday - 1]}, ${m[dt.month - 1]} ${dt.day}';
-  }
-
-  String _fmtTime(DateTime dt) {
-    final h = dt.hour % 12 == 0 ? 12 : dt.hour % 12;
-    final min = dt.minute.toString().padLeft(2, '0');
-    return '$h:$min ${dt.hour >= 12 ? "PM" : "AM"}';
   }
 }
