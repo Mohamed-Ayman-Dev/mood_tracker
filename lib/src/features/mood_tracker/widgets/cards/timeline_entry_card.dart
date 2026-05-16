@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mood_tracker/src/core/extension/format_date_time_on_date_time.dart';
 import 'package:mood_tracker/src/core/extension/mood_type_extension.dart';
+import 'package:mood_tracker/src/core/extension/space_extensions_helper.dart';
+import 'package:mood_tracker/src/core/themes/colors.dart';
 import 'package:mood_tracker/src/features/mood_tracker/widgets/painters/mood_face_painter.dart';
 
 import '../../models/mood_entry.dart';
@@ -92,7 +94,7 @@ class _TimelineEntryCardState extends State<TimelineEntryCard>
                     height: 58,
                     child: CustomPaint(painter: MoodFacePainter(mood: mood)),
                   ),
-                  const SizedBox(height: 6),
+                  6.heightSpace,
                   Text(
                     mood.label,
                     style: TextStyle(
@@ -101,11 +103,11 @@ class _TimelineEntryCardState extends State<TimelineEntryCard>
                       fontSize: 11,
                     ),
                   ),
-                  const SizedBox(height: 3),
+                  3.heightSpace,
                   Text(
                     widget.entry.timestamp.fmtDate(),
                     style: const TextStyle(
-                      color: Color(0xFF999999),
+                      color: AppColors.dateTextColor,
                       fontSize: 9.5,
                     ),
                     textAlign: TextAlign.center,

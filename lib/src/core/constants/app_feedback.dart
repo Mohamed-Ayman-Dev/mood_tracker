@@ -1,17 +1,16 @@
+import 'package:flutter/cupertino.dart';
+import 'package:mood_tracker/src/core/constants/enums.dart';
+import 'package:mood_tracker/src/core/helpers/dialog_helpers.dart';
+
 final class AppFeedback {
   AppFeedback._();
 
-  static void successPopUp(String message, {String? desc}) {
-    //   EasyLoading.dismiss();
-    //   AlertUtils.showSuccessDialog(
-    //     title: message,
-    //     oneButton: true,
-    //     pop: false,
-    //     desc: desc,
-    //     onTab: () {
-    //       LocatorService.navigationService.currentState?.pop();
-    //     },
-    //   );
+  static void successPopUp(
+    BuildContext context, {
+    required String title,
+    required MoodType mode,
+  }) {
+    DialogHelpers.showSuccessDialog(context, title: title, mode: mode);
   }
 
   // static void successToast(String message) {

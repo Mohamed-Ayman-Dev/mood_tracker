@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:mood_tracker/src/core/constants/enums.dart';
 import 'package:mood_tracker/src/core/extension/mood_type_extension.dart';
 import 'package:mood_tracker/src/core/responsive/responsive_layout.dart';
+import 'package:mood_tracker/src/core/themes/shadows.dart';
+import 'package:mood_tracker/src/core/themes/text_styles.dart';
 import 'package:mood_tracker/src/features/mood_tracker/providers/mood_tracker.dart';
 import 'package:provider/provider.dart';
+
+import '../constants/app_feedback.dart';
 
 class CustomAnimatedButton extends StatefulWidget {
   const CustomAnimatedButton({super.key});
@@ -54,6 +58,11 @@ class _CustomAnimatedButtonState extends State<CustomAnimatedButton>
               onTapCancel: () => _ctrl.reverse(),
               onTap: () {
                 context.read<MoodProvider>().addMood();
+                AppFeedback.successPopUp(
+                  context,
+                  title: '${selectedMood.label} logged successfully!',
+                  mode: selectedMood,
+                );
               },
               child: AnimatedBuilder(
                 animation: _ctrl,
@@ -71,24 +80,12 @@ class _CustomAnimatedButtonState extends State<CustomAnimatedButton>
                     decoration: BoxDecoration(
                       color: selectedMood.color,
                       borderRadius: BorderRadius.circular(16),
-                      boxShadow: [
-                        BoxShadow(
-                          color: selectedMood.color.withOpacity(0.5),
-                          blurRadius: 20,
-                          spreadRadius: 2,
-                          offset: const Offset(0, 4),
-                        ),
-                      ],
+                      boxShadow: [AppShadows.buttonShadow(selectedMood.color)],
                     ),
-                    child: const Center(
+                    child: Center(
                       child: Text(
                         'Log this mood',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 17,
-                          fontWeight: FontWeight.w700,
-                          letterSpacing: 0.3,
-                        ),
+                        style: AppTextStyles.labelLarge,
                       ),
                     ),
                   ),

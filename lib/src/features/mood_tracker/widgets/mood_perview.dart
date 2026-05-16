@@ -17,26 +17,7 @@ class MoodPreview extends StatefulWidget {
   State<MoodPreview> createState() => _MoodPreviewState();
 }
 
-class _MoodPreviewState extends State<MoodPreview>
-    with SingleTickerProviderStateMixin {
-  late final AnimationController _controller;
-
-  @override
-  void initState() {
-    super.initState();
-
-    _controller = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 3),
-    )..repeat(reverse: true);
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
+class _MoodPreviewState extends State<MoodPreview> {
   @override
   Widget build(BuildContext context) {
     return Selector<MoodProvider, MoodType>(
@@ -45,7 +26,7 @@ class _MoodPreviewState extends State<MoodPreview>
         return Container(
           decoration: BoxDecoration(
             borderRadius: AppRadius.borderRadiusLarge24,
-            color: AppColors.modePreviewBackGroundColor,
+            color: AppColors.moodPreviewBackGroundColor,
             border: Border.all(color: AppColors.borderColor, width: 1.5),
           ),
           padding: EdgeInsets.symmetric(horizontal: 140, vertical: 50),
@@ -55,7 +36,7 @@ class _MoodPreviewState extends State<MoodPreview>
               FloatingMoodFace(mood: selectedMood),
               30.heightSpace,
               Text(
-                selectedMood.name,
+                selectedMood.label,
                 style: AppTextStyles.labelMedium.copyWith(
                   color: selectedMood.color,
                 ),

@@ -50,10 +50,11 @@ abstract class AppTextStyles {
 
   // Labels
   static TextStyle labelLarge = TextStyle(
-    fontSize: 14,
-    fontWeight: FontWeight.w700,
-    color: AppColors.labelTextColor,
     fontFamily: Constant.fontFamily,
+    color: Colors.white,
+    fontSize: 17,
+    fontWeight: FontWeight.w700,
+    letterSpacing: 0.3,
   );
 
   static TextStyle labelMedium = TextStyle(

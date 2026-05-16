@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mood_tracker/src/core/constants/enums.dart';
 import 'package:mood_tracker/src/core/extension/mood_type_extension.dart';
+import 'package:mood_tracker/src/core/extension/space_extensions_helper.dart';
 import 'package:mood_tracker/src/features/mood_tracker/widgets/painters/mood_face_painter.dart';
 
 class MoodSelectorCard extends StatefulWidget {
@@ -83,7 +84,7 @@ class _MoodSelectorCardState extends State<MoodSelectorCard>
                     painter: MoodFacePainter(mood: widget.mood),
                   ),
                 ),
-                const SizedBox(height: 6),
+                6.heightSpace,
                 Text(
                   widget.mood.label,
                   style: TextStyle(

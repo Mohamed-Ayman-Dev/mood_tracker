@@ -1,23 +1,60 @@
 extension FormatDateTimeOnDateTime on DateTime {
-  String fmtDate() {
-    const months = [
-      'Jan',
-      'Feb',
-      'Mar',
-      'Apr',
-      'May',
-      'Jun',
-      'Jul',
-      'Aug',
-      'Sep',
-      'Oct',
-      'Nov',
-      'Dec',
-    ];
+  static const _shortMonths = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec',
+  ];
 
-    const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+  static const _fullMonths = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ];
 
-    return '${days[weekday - 1]}, ${months[month - 1]} $day';
+  static const _shortDays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+
+  static const _fullDays = [
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+    'Sunday',
+  ];
+
+  String fmtDate({
+    bool upperCase = false,
+    bool fullDay = true,
+    bool fullMonth = true,
+  }) {
+    final dayName = fullDay ? _fullDays[weekday - 1] : _shortDays[weekday - 1];
+
+    final monthName = fullMonth
+        ? _fullMonths[month - 1]
+        : _shortMonths[month - 1];
+
+    final result = '$dayName, $monthName $day';
+
+    return upperCase ? result.toUpperCase() : result;
   }
 
   String fmtTime() {

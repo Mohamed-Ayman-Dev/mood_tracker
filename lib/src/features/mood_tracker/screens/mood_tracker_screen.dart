@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mood_tracker/src/core/extension/format_date_time_on_date_time.dart';
 import 'package:mood_tracker/src/core/extension/space_extensions_helper.dart';
 import 'package:mood_tracker/src/core/themes/colors.dart';
 import 'package:mood_tracker/src/core/themes/text_styles.dart';
@@ -34,9 +35,8 @@ class MoodTrackerScreen extends StatelessWidget {
                       children: [
                         50.heightSpace,
                         Text(
-                          'SATURDAY, MAY 16',
+                          DateTime.now().fmtDate(upperCase: true),
                           textAlign: TextAlign.center,
-
                           style: AppTextStyles.headlineSmall,
                         ),
                         10.heightSpace,
