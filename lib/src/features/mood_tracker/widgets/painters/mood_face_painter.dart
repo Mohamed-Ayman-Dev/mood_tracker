@@ -45,7 +45,7 @@ class MoodFacePainter extends CustomPainter {
     // Face background
     canvas.drawCircle(center, r, _fill(mood.bgColor));
     // Face border
-    canvas.drawCircle(center, r, _stroke(c, w: 2.5));
+    canvas.drawCircle(center, r, _stroke(c, w: 8));
 
     switch (mood) {
       case MoodType.ecstatic:
@@ -162,9 +162,9 @@ class MoodFacePainter extends CustomPainter {
         height: r * 0.46,
       ),
       math.pi,
-      math.pi,
+      -math.pi,
       false,
-      _stroke(c, w: 2.5),
+      _stroke(c, w: 3),
     );
   }
 
@@ -200,7 +200,7 @@ class MoodFacePainter extends CustomPainter {
     canvas.drawLine(
       Offset(cx - r * 0.30, cy + r * 0.32),
       Offset(cx + r * 0.30, cy + r * 0.32),
-      _stroke(c, w: 2.5),
+      _stroke(c, w: 3),
     );
   }
 
@@ -230,7 +230,7 @@ class MoodFacePainter extends CustomPainter {
       0,
       math.pi,
       false,
-      _stroke(c, w: 2.5),
+      _stroke(c, w: 3),
     );
 
     // Teardrop under left eye
@@ -255,12 +255,12 @@ class MoodFacePainter extends CustomPainter {
       canvas.drawLine(
         Offset(ex - xs, eyeY - xs),
         Offset(ex + xs, eyeY + xs),
-        _stroke(c, w: 2.5),
+        _stroke(c, w: 3),
       );
       canvas.drawLine(
         Offset(ex + xs, eyeY - xs),
         Offset(ex - xs, eyeY + xs),
-        _stroke(c, w: 2.5),
+        _stroke(c, w: 3),
       );
     }
 
@@ -351,7 +351,7 @@ class MoodFacePainter extends CustomPainter {
       path.moveTo(ex - half, ey + w * 0.10);
       path.lineTo(ex + half, ey - w * 0.28);
     }
-    canvas.drawPath(path, _stroke(c, w: 2.5));
+    canvas.drawPath(path, _stroke(c, w: 3));
   }
 
   /// Teardrop shape drawn with cubic beziers.

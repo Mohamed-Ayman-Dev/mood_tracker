@@ -1,11 +1,14 @@
+import 'package:flutter/animation.dart';
+
 final class Constant {
   const Constant._();
 
   static const String fontFamily = 'Almarai';
-  static const String appName = 'Invastro';
+  static const String appName = 'Mood Tracker';
+  static const animationDuration = Duration(milliseconds: 700);
+  static const Curve glowAnimationCurve = Curves.easeOutCubic;
 
   // static const pageTransitionDuration = Duration(milliseconds: 400);
-  // static const Curve pageTransitionCurve = Curves.easeInOut;
   // static const loadingDuration = Duration(milliseconds: 700);
   // static const durationZero = Duration(seconds: 0);
   // static const progressTimerDuration = Duration(seconds: 11);

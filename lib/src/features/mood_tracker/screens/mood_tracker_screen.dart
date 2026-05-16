@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:mood_tracker/src/core/extension/mood_type_extension.dart';
+import 'package:mood_tracker/src/core/extension/space_extensions_helper.dart';
+import 'package:mood_tracker/src/core/themes/app_radius.dart';
+import 'package:mood_tracker/src/core/themes/colors.dart';
+import 'package:mood_tracker/src/core/themes/text_styles.dart';
 import 'package:provider/provider.dart';
 
 import '../../../core/constants/enums.dart';
 import '../providers/mood_tracker.dart';
+import '../widgets/animated_mood_glow.dart';
 import '../widgets/mood_selector_card.dart';
+import '../widgets/painters/mood_face_painter.dart';
 import '../widgets/timeline_entry_card.dart';
 
 class MoodTrackerScreen extends StatelessWidget {
@@ -15,28 +21,65 @@ class MoodTrackerScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF8F9FA),
+      backgroundColor: AppColors.backgroundColor,
       body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+        child: Stack(
           children: [
-            _Header(),
-            Expanded(
-              child: SingleChildScrollView(
-                padding: const EdgeInsets.symmetric(horizontal: 24),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const SizedBox(height: 36),
-                    _Prompt(),
-                    const SizedBox(height: 32),
-                    _MoodSelector(),
-                    const SizedBox(height: 48),
-                    _Timeline(),
-                    const SizedBox(height: 40),
-                  ],
+            AnimatedMoodGlow(color: AppColors.primaryColor),
+
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Expanded(
+                  child: SingleChildScrollView(
+                    padding: const EdgeInsets.symmetric(horizontal: 24),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        50.heightSpace,
+                        _Header(),
+                        50.heightSpace,
+                        Container(
+                          decoration: BoxDecoration(
+                            borderRadius: AppRadius.borderRadiusLarge24,
+                            color: Color(0XFF33215a),
+                            border: Border.all(
+                              color: AppColors.borderColor,
+                              width: 1.5,
+                            ),
+                          ),
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 100,
+                            vertical: 70,
+                          ),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              SizedBox(
+                                width: 200,
+                                height: 200,
+                                child: CustomPaint(
+                                  painter: MoodFacePainter(
+                                    mood: MoodType.happy,
+                                  ),
+                                ),
+                              ),
+                              30.heightSpace,
+                              Text('Happy', style: AppTextStyles.labelMedium),
+                            ],
+                          ),
+                        ),
+                        50.heightSpace,
+
+                        _MoodSelector(),
+                        48.heightSpace,
+                        _Timeline(),
+                        48.heightSpace,
+                      ],
+                    ),
+                  ),
                 ),
-              ),
+              ],
             ),
           ],
         ),
@@ -45,88 +88,33 @@ class MoodTrackerScreen extends StatelessWidget {
   }
 }
 
-// ─── Header ───────────────────────────────────────────────────────────────────
-
-class _Header extends StatelessWidget {
-  static const _weekdays = [
-    'Monday',
-    'Tuesday',
-    'Wednesday',
-    'Thursday',
-    'Friday',
-    'Saturday',
-    'Sunday',
-  ];
-  static const _months = [
-    'Jan',
-    'Feb',
-    'Mar',
-    'Apr',
-    'May',
-    'Jun',
-    'Jul',
-    'Aug',
-    'Sep',
-    'Oct',
-    'Nov',
-    'Dec',
-  ];
-
-  @override
-  Widget build(BuildContext context) {
-    final now = DateTime.now();
-    final dateStr =
-        '${_weekdays[now.weekday - 1]}, ${_months[now.month - 1]} ${now.day}';
-    return Container(
-      padding: const EdgeInsets.fromLTRB(24, 20, 24, 20),
-      color: Colors.white,
-      child: Row(
-        children: [
-          const Text('🌿', style: TextStyle(fontSize: 26)),
-          const SizedBox(width: 12),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text(
-                'Mood Tracker',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w800,
-                  color: Color(0xFF1A1A2E),
-                ),
-              ),
-              Text(
-                dateStr,
-                style: const TextStyle(fontSize: 12, color: Color(0xFF999999)),
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-}
-
 // ─── Prompt ───────────────────────────────────────────────────────────────────
 
-class _Prompt extends StatelessWidget {
+class _Header extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
+    crossAxisAlignment: CrossAxisAlignment.center,
     children: [
-      Text(
-        'How are you\nfeeling today?',
-        style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-          fontWeight: FontWeight.w800,
-          color: const Color(0xFF1A1A2E),
-          height: 1.2,
+      const Text(
+        'SATURDAY, MAY 16',
+        textAlign: TextAlign.center,
+
+        style: TextStyle(
+          fontSize: 12,
+          color: AppColors.thirdColor,
+
+          fontWeight: FontWeight.w300,
         ),
       ),
-      const SizedBox(height: 8),
-      const Text(
-        'Tap a mood to log how you feel right now.',
-        style: TextStyle(fontSize: 14, color: Color(0xFF999999)),
+      10.heightSpace,
+      Center(
+        child: Text(
+          'How are you\nfeeling today?',
+          textAlign: TextAlign.center,
+          style: AppTextStyles.headlineLarge,
+        ),
       ),
+      8.heightSpace,
     ],
   );
 }
@@ -136,31 +124,35 @@ class _Prompt extends StatelessWidget {
 class _MoodSelector extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final provider = context.read<MoodProvider>(); // write-only → no rebuild
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: MoodType.values
-          .map(
-            (mood) => MoodSelectorCard(
-              mood: mood,
-              onTap: () {
-                provider.addMood(mood);
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text('${mood.label} logged ✓'),
-                    duration: const Duration(seconds: 1),
-                    backgroundColor: mood.color,
-                    behavior: SnackBarBehavior.floating,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
+    return Container(
+      decoration: BoxDecoration(
+        border: Border.all(color: AppColors.borderColor),
+        borderRadius: AppRadius.borderRadiusLarge24,
+      ),
+      child: Wrap(
+        children: MoodType.values
+            .map(
+              (mood) => MoodSelectorCard(
+                mood: mood,
+                onTap: () {
+                  context.read<MoodProvider>().addMood(mood);
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text('${mood.label} logged ✓'),
+                      duration: const Duration(seconds: 1),
+                      backgroundColor: mood.color,
+                      behavior: SnackBarBehavior.floating,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      margin: const EdgeInsets.all(16),
                     ),
-                    margin: const EdgeInsets.all(16),
-                  ),
-                );
-              },
-            ),
-          )
-          .toList(),
+                  );
+                },
+              ),
+            )
+            .toList(),
+      ),
     );
   }
 }

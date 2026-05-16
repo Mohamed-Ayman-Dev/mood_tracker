@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mood_tracker/src/core/extension/mood_type_extension.dart';
+import 'package:mood_tracker/src/features/mood_tracker/widgets/painters/mood_face_painter.dart';
 
 import '../models/mood_entry.dart';
-import '../painters/mood_face_painter.dart';
 
 class TimelineEntryCard extends StatefulWidget {
   final MoodEntry entry;

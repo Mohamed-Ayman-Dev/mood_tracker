@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mood_tracker/src/core/constants/enums.dart';
 import 'package:mood_tracker/src/core/extension/mood_type_extension.dart';
-
-import '../painters/mood_face_painter.dart';
+import 'package:mood_tracker/src/features/mood_tracker/widgets/painters/mood_face_painter.dart';
 
 class MoodSelectorCard extends StatefulWidget {
   final MoodType mood;
@@ -55,13 +54,13 @@ class _MoodSelectorCardState extends State<MoodSelectorCard>
               Transform.scale(scale: _scale.value, child: child),
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 200),
-            width: 62,
-            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 6),
+            width: 150,
+            padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 6),
             decoration: BoxDecoration(
-              color: _hovered ? widget.mood.bgColor : Colors.white,
+              color: _hovered ? widget.mood.bgColor : Colors.transparent,
               borderRadius: BorderRadius.circular(16),
               border: Border.all(
-                color: _hovered ? c : const Color(0xFFEEEEEE),
+                color: _hovered ? c : Colors.transparent,
                 width: _hovered ? 2.0 : 1.5,
               ),
               boxShadow: [
@@ -78,8 +77,8 @@ class _MoodSelectorCardState extends State<MoodSelectorCard>
               mainAxisSize: MainAxisSize.min,
               children: [
                 SizedBox(
-                  width: 50,
-                  height: 50,
+                  width: 100,
+                  height: 100,
                   child: CustomPaint(
                     painter: MoodFacePainter(mood: widget.mood),
                   ),

@@ -1,27 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mood_tracker/src/core/constants/constant.dart';
 import 'package:mood_tracker/src/core/themes/colors.dart';
 
 abstract class AppTextStyles {
   // Headlines
   static TextStyle headlineLarge = TextStyle(
-    fontSize: 48.sp,
+    fontSize: 35,
     fontWeight: FontWeight.w700,
-    height: 1.2,
-    color: Colors.white,
+    height: 1.1,
+    color: AppColors.primaryColor,
     fontFamily: Constant.fontFamily,
   );
 
   static TextStyle headlineMedium = TextStyle(
-    fontSize: 20.sp,
+    fontSize: 20,
     fontWeight: FontWeight.w700,
     color: AppColors.labelTextColor,
     fontFamily: Constant.fontFamily,
   );
 
   static TextStyle headlineSmall = TextStyle(
-    fontSize: 14.sp,
+    fontSize: 14,
     fontWeight: FontWeight.w400,
     color: AppColors.headlineTextColor,
     fontFamily: Constant.fontFamily,
@@ -29,21 +28,21 @@ abstract class AppTextStyles {
 
   // Titles
   static TextStyle titleLarge = TextStyle(
-    fontSize: 36.sp,
+    fontSize: 36,
     fontWeight: FontWeight.w700,
     color: Colors.white,
     fontFamily: Constant.fontFamily,
   );
 
   static TextStyle titleMedium = TextStyle(
-    fontSize: 18.sp,
+    fontSize: 18,
     fontWeight: FontWeight.w500,
     color: Colors.black,
     fontFamily: Constant.fontFamily,
   );
 
   static TextStyle titleSmall = TextStyle(
-    fontSize: 18.sp,
+    fontSize: 18,
     fontWeight: FontWeight.w500,
     color: Colors.black,
     fontFamily: Constant.fontFamily,
@@ -51,21 +50,21 @@ abstract class AppTextStyles {
 
   // Labels
   static TextStyle labelLarge = TextStyle(
-    fontSize: 14.sp,
+    fontSize: 14,
     fontWeight: FontWeight.w700,
     color: AppColors.labelTextColor,
     fontFamily: Constant.fontFamily,
   );
 
   static TextStyle labelMedium = TextStyle(
-    fontSize: 13.sp,
-    fontWeight: FontWeight.w700,
-    color: AppColors.labelTextColor,
+    fontSize: 16,
+    fontWeight: FontWeight.w600,
+    color: AppColors.moodHappyColor,
     fontFamily: Constant.fontFamily,
   );
 
   static TextStyle labelSmall = TextStyle(
-    fontSize: 14.sp,
+    fontSize: 14,
     fontWeight: FontWeight.w400,
     color: AppColors.labelTextColor,
     fontFamily: Constant.fontFamily,
@@ -74,21 +73,21 @@ abstract class AppTextStyles {
   // Body
 
   static TextStyle bodyLarge = TextStyle(
-    fontSize: 16.sp,
+    fontSize: 16,
     fontWeight: FontWeight.w400,
     color: AppColors.bodyTextColor,
     fontFamily: Constant.fontFamily,
   );
 
   static TextStyle bodyMedium = TextStyle(
-    fontSize: 12.sp,
+    fontSize: 12,
     fontWeight: FontWeight.w400,
     color: AppColors.labelTextColor,
     fontFamily: Constant.fontFamily,
   );
 
   static TextStyle bodySmall = TextStyle(
-    fontSize: 12.sp,
+    fontSize: 12,
     fontWeight: FontWeight.w400,
     color: AppColors.bodyGreyTextColor,
     fontFamily: Constant.fontFamily,

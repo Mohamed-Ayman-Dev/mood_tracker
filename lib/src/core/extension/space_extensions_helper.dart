@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 extension Spacing on num {
-  // For vertical spacing
-  Widget get heightSpace => SizedBox(height: h.h);
+  // Vertical spacing
+  Widget get heightSpace => SizedBox(height: toDouble());
 
-  // For horizontal spacing
-  Widget get widthSpace => SizedBox(width: w.w);
+  // Horizontal spacing
+  Widget get widthSpace => SizedBox(width: toDouble());
 }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mood_tracker/src/core/themes/text_styles.dart';
 
 import '../constants/constant.dart';
@@ -127,14 +126,14 @@ abstract class CustomTheme {
       style: ElevatedButton.styleFrom(
         textStyle: TextStyle(
           color: AppColors.buttonTextColor,
-          fontSize: 14.sp,
+          fontSize: 14,
           fontFamily: Constant.fontFamily,
           fontWeight: FontWeight.w400,
         ),
         backgroundColor: AppColors.primaryColor,
         elevation: 0,
-        maximumSize: Size(double.infinity, 48.h),
-        minimumSize: Size(double.infinity, 48.h),
+        maximumSize: Size(double.infinity, 48),
+        minimumSize: Size(double.infinity, 48),
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(8)),
         ),
@@ -143,14 +142,14 @@ abstract class CustomTheme {
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
         textStyle: TextStyle(
-          fontSize: 14.sp,
+          fontSize: 14,
           fontFamily: Constant.fontFamily,
           fontWeight: FontWeight.w400,
           color: AppColors.primaryColor,
         ),
         elevation: 0,
-        maximumSize: Size(double.infinity, 48.h),
-        minimumSize: Size(double.infinity, 48.h),
+        maximumSize: Size(double.infinity, 48),
+        minimumSize: Size(double.infinity, 48),
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(8)),
         ),

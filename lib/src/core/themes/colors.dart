@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 /// Update the colors as desired with their dark mode variations below them.
 abstract class AppColors {
   // objects Colors
-  static const Color primaryColor = Color(0xFFB58934);
-  static const Color secondaryColor = Color(0xFFFEE086);
-  static const Color thirdColor = Color(0xFFE5E5E5);
+  static const Color primaryColor = Color(0xFF794fd6);
+  static const Color secondaryColor = Color(0xFF12101e);
+  static const Color thirdColor = Color(0xFF999999);
 
   static const Color iconButtonIconColor = primaryColor;
 
   // background Colors
-  static const Color backgroundColor = Colors.white;
+  static const Color backgroundColor = Color(0XFF12101e);
   static const Color appBarBackGroundColor = Colors.white;
   static const Color navBarBackgroundColor = Color(0xFF323539);
 
@@ -27,8 +27,14 @@ abstract class AppColors {
   static const Color errorTextColor = Color(0xFFFF0E0E);
 
   // border colors
-  static const Color borderColor = Color(0xFF8E8E93);
+  static const Color borderColor = Color(0XFF4f3c70);
 
   // other colors
   static const Color dividerColor = Color(0xFFDADADA);
+
+  //mods colors
+  static const Color moodHappyColor = Color(0xFF11aa79);
+  static const Color moodSadColor = Color(0XFF33215a);
+  static const Color moodTiredColor = Color(0XFF33215a);
+  static const Color moodAnxiousColor = Color(0XFF33215a);
 }
