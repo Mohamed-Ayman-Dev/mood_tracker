@@ -17,8 +17,9 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      minTextAdapt: true,
       designSize: Size(375, 812),
+      minTextAdapt: true,
+      splitScreenMode: true,
       // fontSizeResolver: (fontSize, instance) {
       //   final scale = instance.scaleWidth.clamp(0.85, 1.15);
       //   return fontSize * scale;
